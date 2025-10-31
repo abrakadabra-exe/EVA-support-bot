@@ -16,9 +16,8 @@ ENV EXECUTIONS_MODE=queue
 ENV EXECUTIONS_DATA_SAVE_ON_ERROR=all
 ENV EXECUTIONS_DATA_SAVE_ON_SUCCESS=all
 
-# Persistent volume will be mounted by Render
+# Persistent volume (free tier = no disk, but declare for future)
 VOLUME /home/node/.n8n
 
-# Start n8n using the official entrypoint
+# Let the official entrypoint handle "n8n start"
 ENTRYPOINT ["/docker-entrypoint.sh"]
-CMD ["n8n", "start"]
