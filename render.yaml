@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: EVA-support-bot
+    env: docker
+    repo: https://github.com/n8nio/n8n
+    branch: master
+    plan: free
+    autoDeploy: true
+    envVars:
+      - key: N8N_HOST
+        value: 0.0.0.0
+      - key: N8N_PORT
+        value: 5678
+      - key: N8N_PROTOCOL
+        value: http
+      - key: N8N_BASIC_AUTH_ACTIVE
+        value: "true"
+      - key: N8N_BASIC_AUTH_USER
+        value: evaadmin
+      - key: N8N_BASIC_AUTH_PASSWORD
+        generateValue: true
+      - key: WEBHOOK_URL
+        value: https://EVA-support-bot.onrender.com/
+      - key: GENERIC_TIMEZONE
+        value: UTC
+    disks:
+      - name: n8n-data
+        mountPath: /home/node/.n8n
+        sizeGB: 1
