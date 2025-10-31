@@ -19,5 +19,6 @@ ENV EXECUTIONS_DATA_SAVE_ON_SUCCESS=all
 # Persistent volume will be mounted by Render
 VOLUME /home/node/.n8n
 
-# Start n8n
+# Start n8n using the official entrypoint
+ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["n8n", "start"]
